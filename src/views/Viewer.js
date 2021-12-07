@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
@@ -9,7 +9,6 @@ import SidePanel from '@geomatico/geocomponents/SidePanel';
 import Map from '@geomatico/geocomponents/Map';
 
 import {MAPSTYLES, WIDESCREEN_STEP, INITIAL_VIEWPORT, DRAWER_WIDTH, INITIAL_MAPSTYLE_URL} from '../config';
-import Logo from '../components/icons/Logo';
 
 import SectionTitle from '../components/SectionTitle';
 import styled from '@mui/styles/styled';
@@ -32,6 +31,27 @@ const App = () => {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
   const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
 
+  const sources = useMemo(() => ({
+    monumentos_iglesias_mas: {
+      type: 'geojson',
+      data: 'carto/monumentos_iglesias_mas.geojson'
+    }
+  }), []);
+
+  const layers = useMemo(() => ([
+    {
+      id: 'monumentos_iglesias_mas',
+      source: 'monumentos_iglesias_mas',
+      type: 'circle',
+      paint: {
+        'circle-radius': 4,
+        'circle-color': 'red',
+        'circle-stroke-width': 1,
+        'circle-stroke-color': '#000'
+      }
+    }
+  ]), []);
+
   const onViewportChange = (viewport) =>
     setViewport({
       ...viewport
@@ -40,12 +60,8 @@ const App = () => {
   return (
     <>
       <ResponsiveHeader
-        logo={<Logo/>}
-        logoStyleProps={{
-          width: 170,
-          paddingTop: 0,
-        }}
         onStartIconClick={widescreen ? undefined : handleClose}
+        title='ROMA CITÁ APERTA'
       >
       </ResponsiveHeader>
       <SidePanel
@@ -72,6 +88,8 @@ const App = () => {
           mapStyle={selectedStyleUrl}
           viewport={viewport}
           onViewportChange={onViewportChange}
+          sources={sources}
+          layers={layers}
           // mapboxAccessToken={process.env.MAPBOX_ACCESS_TOKEN} // Token necesario para ver datos de mapbox o usar mapbox-gl-js v2 (react-map-gl 6)
         />
       </MapContent>
