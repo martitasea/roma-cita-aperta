@@ -37,7 +37,82 @@ export const MAPSTYLES = [
   }
 ];
 
-export const INITIAL_MAPSTYLE_URL = MAPSTYLES[1].url;
+export const INITIAL_MAPSTYLE_URL = MAPSTYLES[2].url;
 
 export const WIDESCREEN_STEP = '770px';
 export const DRAWER_WIDTH = '300px';
+
+export const LEGEND = [
+  {
+    'name': 'Estrellas',
+    'type': 'symbol',
+    'paint': {
+      'color': '#028090',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Fuentes',
+    'type': 'symbol',
+    'paint': {
+      'color': '#00BFB2',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Montes',
+    'type': 'symbol',
+    'paint': {
+      'color': '#252424',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Monumentos, Iglesias,...',
+    'type': 'symbol',
+    'paint': {
+      'color': '#C64191',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Museos',
+    'type': 'symbol',
+    'paint': {
+      'color': '#c44242',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Parques, miradores...',
+    'type': 'symbol',
+    'paint': {
+      'color': '#1A5E63',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Plazas, calles, puertas, puentes',
+    'type': 'symbol',
+    'paint': {
+      'color': '#FF7700',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Restaurantes, bares',
+    'type': 'symbol',
+    'paint': {
+      'color': '#654f6f',
+      'width': 12
+    }
+  },
+  {
+    'name': 'Tiendas, mercados',
+    'type': 'symbol',
+    'paint': {
+      'color': '#cdd063',
+      'width': 12
+    }
+  },
+];
