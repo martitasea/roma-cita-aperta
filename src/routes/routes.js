@@ -1,6 +1,6 @@
 import React from 'react';
 import {HashRouter, Routes, Route} from 'react-router-dom';
-import Viewer from '../views/Viewer';
+import Viewer from '../views/Home';
 
 const AppRoutes = () =>
   <HashRouter>

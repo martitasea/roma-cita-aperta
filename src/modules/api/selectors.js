@@ -1,0 +1,1 @@
+export const getFeatures = (state) => state.api.data;

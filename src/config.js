@@ -9,7 +9,6 @@ export const INITIAL_VIEWPORT = {
   transitionDuration: 1000,
   transitionInterpolator: new FlyToInterpolator(),
 };
-
 export const MAPSTYLES = [
   {
     'label': 'Hibrid',
@@ -36,12 +35,9 @@ export const MAPSTYLES = [
     'firstTopLayer': 'place-other'
   }
 ];
-
 export const INITIAL_MAPSTYLE_URL = MAPSTYLES[2].url;
-
 export const WIDESCREEN_STEP = '770px';
 export const DRAWER_WIDTH = '300px';
-
 export const LEGEND = [
   {
     'name': 'Estrellas',
@@ -115,4 +111,15 @@ export const LEGEND = [
       'width': 12
     }
   },
+];
+export const LAYERS = [
+  {
+    id: 'monuments',
+    source: 'monuments',
+    type: 'circle',
+    paint: {
+      'circle-radius': 6,
+      'circle-color': '#028090',
+    }
+  }
 ];

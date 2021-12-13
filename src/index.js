@@ -2,6 +2,8 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 
 import Routes from './routes/routes';
+import {Provider} from 'react-redux';
+import store from './store';
 
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import {StyledEngineProvider} from '@mui/material/styles';
@@ -13,12 +15,14 @@ import './i18n';
 
 const App = () => {
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme()}>
-        <CssBaseline/>
-        <Routes/>
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <Provider store={store}>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme()}>
+          <CssBaseline/>
+          <Routes/>
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </Provider>
   );
 };
 
