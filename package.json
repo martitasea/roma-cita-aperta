@@ -1,5 +1,5 @@
 {
-  "name": "plantilla-visor-react",
+  "name": "roma-cita-aperta",
   "version": "0.0.1",
   "description": "",
   "main": "./dist/main.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geomatico/plantilla-visor-react.git"
+    "url": "git+https://github.com/martitasea/roma-cita-aperta.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/geomatico/plantilla-visor-react/issues"
+    "url": "https://github.com/martitasea/roma-cita-aperta/issues"
   },
-  "homepage": "https://labs.geomatico.es/plantilla-visor-react",
+  "homepage": "https://martitasea.github.io/roma-cita-aperta/",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",

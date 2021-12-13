@@ -1,21 +1,5 @@
-# plantilla-visor-react
+# Roma cità aperta
 
-Template for a simple viewer, to use it, go to https://github.com/geomatico/plantilla-visor-react and click on 'Use this template', a new repository will be created based on this template.
-If you want to add functionalities, you can see more components here: https://labs.geomatico.es/geocomponents/
-
-## First steps
-
-Rename project in the following files:
-
-- package.json:
-    - name
-    - repository.url
-    - bugs.url
-    - homepage
-- package-lock.json:
-    - name
-- template.html:
-    - Etiqueta `<title>`
 
 ## Mapbox version
 
