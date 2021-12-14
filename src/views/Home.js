@@ -44,9 +44,13 @@ const App = () => {
   const dispatch = useDispatch();
   const data = useSelector(getFeatures);
   const sources = useMemo (() => ({
-    monuments: {
+    data: {
       type: 'geojson',
       data: data
+    },
+    quartieri: {
+      type: 'geojson',
+      data: 'carto/quartieri-roma.geojson'
     }
   })
   );
@@ -132,6 +136,7 @@ const App = () => {
                 price={featureClicked.properties.price}
                 other={featureClicked.properties.other}
                 image={featureClicked.properties.image}
+                plan={featureClicked.properties.plan}
               />
             </CustomPopup>
           }

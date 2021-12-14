@@ -5,7 +5,7 @@ const initialState = {
   data:
     {
       type: 'FeatureCollection',
-      name: 'monuments',
+      name: 'data',
       features: [],
     }
 };
@@ -13,24 +13,26 @@ const initialState = {
 const apiFeaturesSuccess = (state, {payload}) => {
   const featuresPrueba = payload.values.filter(row =>
     row.length >= 5
-    && row[0]
-    && row[3] && typeof row[3] === 'number'
-    && row[4] && typeof row[4] === 'number')
+    && row[5]
+    && row[3] && typeof row[0] === 'number'
+    && row[4] && typeof row[1] === 'number')
     .map(row => ({
       type: 'Feature',
       properties: {
-        name: row[0],
-        description: row[1],
-        type: row[2],
-        price: row[5],
-        style: row[6],
-        image: row[7],
-        plan: row[8],
-        web: row[9]
+        rate: row[2],
+        type: row[3],
+        name: row[4],
+        description: row[5],
+        author: row[6],
+        style: row[7],
+        price: row[8],
+        image: row[9],
+        plan: row[10],
+        doc: row[11]
       },
       geometry: {
         type: 'Point',
-        coordinates: [row[4], row[3]]
+        coordinates: [row[0], row[1]]
       }
     }));
   return {

@@ -31,7 +31,7 @@ const apiMiddleware = () => {
   return store => next => action => {
     switch (action.type) {
     case apiActionTypes.API_GET_FEATURES:
-      return GET_FEATURES(ENDPOINTS.getPois('monuments'))
+      return GET_FEATURES(ENDPOINTS.getPois('data'))
         .then(apiFeaturesSuccess)
         .then(store.dispatch)
         .then(() => next(action));

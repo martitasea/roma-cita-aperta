@@ -2,8 +2,8 @@ import {FlyToInterpolator} from 'react-map-gl';
 
 export const INITIAL_VIEWPORT = {
   latitude: 41.895,
-  longitude: 12.50,
-  zoom: 11,
+  longitude: 12.490,
+  zoom: 13,
   bearing: 0,
   pitch: 0,
   transitionDuration: 1000,
@@ -114,12 +114,30 @@ export const LEGEND = [
 ];
 export const LAYERS = [
   {
-    id: 'monuments',
-    source: 'monuments',
+    id: 'data',
+    source: 'data',
     type: 'circle',
     paint: {
-      'circle-radius': 6,
-      'circle-color': '#028090',
+      'circle-radius': 10,
+      'circle-color': [
+        'match',
+        ['get', 'type'],
+        'Visitar', '#028090',
+        'Pasear', '#E42C64',
+        'Restauración', '#08FFC8',
+        'Dormir', '#0A2239',
+        'Comercio', '#FD5F00',
+        '#A3A3A3'
+      ]
     }
-  }
+  },
+  /*{
+    id: 'quartieri',
+    source: 'quartieri',
+    type: 'line',
+    paint: {
+      'line-color': '#000',
+      'line-width': 2
+    }
+  }*/
 ];
