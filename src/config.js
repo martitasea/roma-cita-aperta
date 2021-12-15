@@ -86,8 +86,8 @@ export const LAYERS = [
     source: 'quartieri',
     type: 'line',
     paint: {
-      'line-color': '#000',
-      'line-width': 2
+      'line-color': '#444242',
+      'line-width': 0.5
     }
   },
   {
@@ -105,7 +105,7 @@ export const LAYERS = [
         'Dormir', '#0A2239',
         'Comercio', '#FD5F00',
         '#A3A3A3'
-      ]
+      ],
     }
   },
 
