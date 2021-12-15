@@ -55,24 +55,24 @@ const MainContent = ({mapStyle}) => {
     // mapboxAccessToken={process.env.MAPBOX_ACCESS_TOKEN} // Token necesario para ver datos de mapbox o usar mapbox-gl-js v2 (react-map-gl 6)
   >
     {
-      featureClicked &&
-    <CustomPopup
-      longitude={featureClicked.geometry.coordinates[0]}
-      latitude={featureClicked.geometry.coordinates[1]}
-      anchor="bottom"
-      closeButton={false}
-    >
-      <PopupInfo
-        name={featureClicked.properties.name}
-        style={featureClicked.properties.style}
-        author={featureClicked.properties.author}
-        description={featureClicked.properties.description}
-        price={featureClicked.properties.price}
-        other={featureClicked.properties.other}
-        image={featureClicked.properties.image}
-        plan={featureClicked.properties.plan}
-      />
-    </CustomPopup>
+      featureClicked && <CustomPopup
+        longitude={featureClicked.geometry.coordinates[0]}
+        latitude={featureClicked.geometry.coordinates[1]}
+        anchor="bottom"
+        closeButton={false}
+      >
+        <PopupInfo
+          name={featureClicked.properties.name}
+          style={featureClicked.properties.style}
+          author={featureClicked.properties.author}
+          description={featureClicked.properties.description}
+          price={featureClicked.properties.price}
+          other={featureClicked.properties.other}
+          image={featureClicked.properties.image}
+          plan={featureClicked.properties.plan}
+          timetable={JSON.parse(featureClicked.properties.timetable)}
+        />
+      </CustomPopup>
     }
     <GeolocateControl
       style={{right: 10, top: 20}}

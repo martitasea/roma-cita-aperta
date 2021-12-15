@@ -12,11 +12,12 @@ import TabPanel from '@mui/lab/TabPanel';
 import {TabContext} from '@mui/lab';
 import MoneyOffCsredIcon from '@mui/icons-material/MoneyOffCsred';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import WeekToogleButton from './WeekToogleButton';
 
-const PopupInfo = ({name, style, author, description, price, other, image, plan}) => {
+const PopupInfo = ({name, style, author, description, price, other, image, plan, timetable}) => {
   const [tabValue, setTabValue] = useState('description');
   const handleTabChange = (event, newValue) => setTabValue(newValue);
-  return <Card sx={{ maxWidth: 365}} elevation='12'>
+  return <Card sx={{ maxWidth: 365}} elevation={12}>
     <CardHeader
       avatar={<Avatar sx={{bgcolor: 'primary.main'}}>
         {price ? <AttachMoneyIcon/> : <MoneyOffCsredIcon/>}
@@ -40,7 +41,7 @@ const PopupInfo = ({name, style, author, description, price, other, image, plan}
           <Tab label='Plano' value='map'/>
         </Tabs>
         <TabPanel value='open' index={0} sx={{m: 1, p: 0}}>
-          Horarios de apertura
+          <WeekToogleButton timetable={timetable}/>
         </TabPanel>
         <TabPanel value='description' index={1} sx={{maxHeight: 345, m: 1, p: 0, height: 'auto', overflowY: 'auto'}}>
           <Typography variant='caption'>{description}</Typography>
@@ -64,6 +65,14 @@ PopupInfo.propTypes = {
   other: PropTypes.string,
   image: PropTypes.string,
   plan: PropTypes.string,
+  timetable: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    label: PropTypes.string.isRequired,
+    opening: PropTypes.shape({
+      open: PropTypes.string,
+      closed: PropTypes.string
+    })
+  }))
 };
 
 PopupInfo.defaultProps = {
@@ -74,6 +83,7 @@ PopupInfo.defaultProps = {
   other: '',
   image: '',
   plan: '',
+  timetable: {}
 };
 
 export default PopupInfo;

@@ -12,7 +12,7 @@ const theme = mode => createTheme({
       main: '#F0BB62',
     },
     text: {
-      primary: '#000000',
+      primary: '#252424',
       secondary: '#746F81',
     }
   },
