@@ -114,6 +114,15 @@ export const LEGEND = [
 ];
 export const LAYERS = [
   {
+    id: 'quartieri',
+    source: 'quartieri',
+    type: 'line',
+    paint: {
+      'line-color': '#000',
+      'line-width': 2
+    }
+  },
+  {
     id: 'data',
     source: 'data',
     type: 'circle',
@@ -131,13 +140,5 @@ export const LAYERS = [
       ]
     }
   },
-  /*{
-    id: 'quartieri',
-    source: 'quartieri',
-    type: 'line',
-    paint: {
-      'line-color': '#000',
-      'line-width': 2
-    }
-  }*/
+
 ];

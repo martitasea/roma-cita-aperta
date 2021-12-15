@@ -19,6 +19,7 @@ module.exports = {
           ...config.resolve.alias,
           '@emotion/core': toPath('node_modules/@emotion/react'),
           'emotion-theming': toPath('node_modules/@emotion/react'),
+          '@geomatico/geocomponents': toPath('node_modules/@geomatico/geocomponents/dist'),
         }
       }
     };
