@@ -29,6 +29,7 @@ const apiFeaturesSuccess = (state, {payload}) => {
         image: row[9],
         plan: row[10],
         doc: row[11],
+        alert_timetable: row[26],
         timetable: [
           {
             id:'1',

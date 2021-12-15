@@ -9,7 +9,7 @@ const theme = mode => createTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#F0BB62',
+      main: '#c44242',
     },
     text: {
       primary: '#252424',

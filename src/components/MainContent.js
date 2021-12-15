@@ -71,6 +71,7 @@ const MainContent = ({mapStyle}) => {
           image={featureClicked.properties.image}
           plan={featureClicked.properties.plan}
           timetable={JSON.parse(featureClicked.properties.timetable)}
+          alert_timetable={featureClicked.properties.alert_timetable}
         />
       </CustomPopup>
     }

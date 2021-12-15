@@ -17,6 +17,7 @@ Default.args = {
   price: 'Gratis',
   other: '',
   image: 'https://viajararoma.com/wp-content/uploads/StaMariaInTrastevere.jpg',
+  alert_timetable: 'Gratis último domingo de cada mes',
   timetable: [
     {
       id: 1,

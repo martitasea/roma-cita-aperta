@@ -14,12 +14,12 @@ import MoneyOffCsredIcon from '@mui/icons-material/MoneyOffCsred';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import WeekToogleButton from './WeekToogleButton';
 
-const PopupInfo = ({name, style, author, description, price, other, image, plan, timetable}) => {
-  const [tabValue, setTabValue] = useState('description');
+const PopupInfo = ({name, style, author, description, price, other, image, plan, timetable, alert_timetable}) => {
+  const [tabValue, setTabValue] = useState('open');
   const handleTabChange = (event, newValue) => setTabValue(newValue);
   return <Card sx={{ maxWidth: 365}} elevation={12}>
     <CardHeader
-      avatar={<Avatar sx={{bgcolor: 'primary.main'}}>
+      avatar={<Avatar sx={{bgcolor: price ? 'secondary.main' : 'primary.main'}}>
         {price ? <AttachMoneyIcon/> : <MoneyOffCsredIcon/>}
       </Avatar>}
       title={name.toUpperCase()}
@@ -41,7 +41,7 @@ const PopupInfo = ({name, style, author, description, price, other, image, plan,
           <Tab label='Plano' value='map'/>
         </Tabs>
         <TabPanel value='open' index={0} sx={{m: 1, p: 0}}>
-          <WeekToogleButton timetable={timetable}/>
+          <WeekToogleButton timetable={timetable} alert_timetable={alert_timetable}/>
         </TabPanel>
         <TabPanel value='description' index={1} sx={{maxHeight: 345, m: 1, p: 0, height: 'auto', overflowY: 'auto'}}>
           <Typography variant='caption'>{description}</Typography>
@@ -65,6 +65,7 @@ PopupInfo.propTypes = {
   other: PropTypes.string,
   image: PropTypes.string,
   plan: PropTypes.string,
+  alert_timetable: PropTypes.string,
   timetable: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
@@ -83,6 +84,7 @@ PopupInfo.defaultProps = {
   other: '',
   image: '',
   plan: '',
+  alert_timetable: '',
   timetable: {}
 };
 
