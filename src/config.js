@@ -40,7 +40,7 @@ export const WIDESCREEN_STEP = '770px';
 export const DRAWER_WIDTH = '300px';
 export const LEGEND = [
   {
-    'name': 'Estrellas',
+    'name': 'Visitar',
     'type': 'symbol',
     'paint': {
       'color': '#028090',
@@ -48,69 +48,37 @@ export const LEGEND = [
     }
   },
   {
-    'name': 'Fuentes',
+    'name': 'Pasear',
     'type': 'symbol',
     'paint': {
-      'color': '#00BFB2',
+      'color': '#E42C64',
       'width': 12
     }
   },
   {
-    'name': 'Montes',
+    'name': 'Restauración',
     'type': 'symbol',
     'paint': {
-      'color': '#252424',
+      'color': '#08FFC8',
       'width': 12
     }
   },
   {
-    'name': 'Monumentos, Iglesias,...',
+    'name': 'Dormir',
     'type': 'symbol',
     'paint': {
-      'color': '#C64191',
+      'color': '#0A2239',
       'width': 12
     }
   },
   {
-    'name': 'Museos',
+    'name': 'Comercio',
     'type': 'symbol',
     'paint': {
-      'color': '#c44242',
+      'color': '#FD5F00',
       'width': 12
     }
-  },
-  {
-    'name': 'Parques, miradores...',
-    'type': 'symbol',
-    'paint': {
-      'color': '#1A5E63',
-      'width': 12
-    }
-  },
-  {
-    'name': 'Plazas, calles, puertas, puentes',
-    'type': 'symbol',
-    'paint': {
-      'color': '#FF7700',
-      'width': 12
-    }
-  },
-  {
-    'name': 'Restaurantes, bares',
-    'type': 'symbol',
-    'paint': {
-      'color': '#654f6f',
-      'width': 12
-    }
-  },
-  {
-    'name': 'Tiendas, mercados',
-    'type': 'symbol',
-    'paint': {
-      'color': '#cdd063',
-      'width': 12
-    }
-  },
+  }
 ];
 export const LAYERS = [
   {
@@ -127,7 +95,7 @@ export const LAYERS = [
     source: 'data',
     type: 'circle',
     paint: {
-      'circle-radius': 10,
+      'circle-radius': 6,
       'circle-color': [
         'match',
         ['get', 'type'],

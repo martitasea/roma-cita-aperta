@@ -22,7 +22,7 @@ const MainContent = styled(Box, {
   left: leftDrawer ? DRAWER_WIDTH : 0
 }));
 
-const Layout = ({mainContent, sidePanelContent}) => {
+const Layout = ({headerLogo, headerTitle, mainContent, sidePanelContent}) => {
   const widescreen = useMediaQuery(`(min-width: ${WIDESCREEN_STEP})`, {noSsr: true});
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
 
@@ -30,8 +30,10 @@ const Layout = ({mainContent, sidePanelContent}) => {
   return (
     <>
       <ResponsiveHeader
+        logo={headerLogo}
+        title={headerTitle}
         onStartIconClick={widescreen ? undefined : handleClose}
-        title='ROMA CITÁ APERTA'
+        logoStyleProps={{width: 'auto'}}
       >
       </ResponsiveHeader>
       <SidePanel
@@ -51,6 +53,8 @@ const Layout = ({mainContent, sidePanelContent}) => {
 };
 
 Layout.propTypes = {
+  headerLogo: PropTypes.element,
+  headerTitle: PropTypes.string.isRequired,
   sidePanelContent: PropTypes.element.isRequired,
   mainContent: PropTypes.element.isRequired
 };
