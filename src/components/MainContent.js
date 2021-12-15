@@ -1,6 +1,7 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
 
+import {GeolocateControl} from 'react-map-gl';
 import Map from '@geomatico/geocomponents/Map';
 
 import {INITIAL_VIEWPORT, LAYERS} from '../config';
@@ -73,6 +74,12 @@ const MainContent = ({mapStyle}) => {
       />
     </CustomPopup>
     }
+    <GeolocateControl
+      style={{right: 10, top: 20}}
+      positionOptions={{enableHighAccuracy: true}}
+      trackUserLocation={true}
+      showAccuracyCircle={false}
+    />
   </Map>;
 };
 
