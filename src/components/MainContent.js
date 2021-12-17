@@ -72,6 +72,7 @@ const MainContent = ({mapStyle}) => {
           plan={featureClicked.properties.plan}
           timetable={JSON.parse(featureClicked.properties.timetable)}
           alert_timetable={featureClicked.properties.alert_timetable}
+          alert_visit={featureClicked.properties.alert_visit}
         />
       </CustomPopup>
     }

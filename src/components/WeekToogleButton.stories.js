@@ -11,6 +11,7 @@ const Template = args => <WeekToogleButton {...args}/>;
 export const Default = Template.bind({});
 Default.args = {
   alert_timetable: 'Gratis último jueves de cada mes.',
+  alert_visit: 'No te pierdas la escultura de Miguel Ángel',
   timetable: [
     {
       id: '1',

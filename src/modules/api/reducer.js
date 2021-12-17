@@ -12,10 +12,10 @@ const initialState = {
 
 const apiFeaturesSuccess = (state, {payload}) => {
   const featuresPrueba = payload.values.filter(row =>
-    row.length >= 5
-    && row[5]
-    && row[3] && typeof row[0] === 'number'
-    && row[4] && typeof row[1] === 'number')
+    row.length >= 4
+    && row[4] && row[3]
+    && typeof row[0] === 'number'
+    && typeof row[1] === 'number')
     .map(row => ({
       type: 'Feature',
       properties: {
@@ -30,6 +30,7 @@ const apiFeaturesSuccess = (state, {payload}) => {
         plan: row[10],
         doc: row[11],
         alert_timetable: row[26],
+        alert_visit: row[27],
         timetable: [
           {
             id:'1',

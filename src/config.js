@@ -75,7 +75,7 @@ export const LEGEND = [
     'name': 'Comercio',
     'type': 'symbol',
     'paint': {
-      'color': '#FD5F00',
+      'color': '#fff200',
       'width': 12
     }
   }
@@ -103,7 +103,7 @@ export const LAYERS = [
         'Pasear', '#E42C64',
         'Restauración', '#08FFC8',
         'Dormir', '#0A2239',
-        'Comercio', '#FD5F00',
+        'Comercio', '#fff200',
         '#A3A3A3'
       ],
     }

@@ -73,7 +73,6 @@ const WeekToogleButton = ({timetable, alert_timetable}) => {
         )
       }
     </Group>
-
     <Box display='flex' flexDirection='row' mt={2}>
       <Typography sx={timetableStyle}>Abierto</Typography>
       <Typography sx={timetableStyle}>{timetable.find(value => parseInt(value.id) === weekday).opening.open}</Typography>

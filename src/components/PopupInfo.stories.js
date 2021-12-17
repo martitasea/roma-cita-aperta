@@ -18,6 +18,7 @@ Default.args = {
   other: '',
   image: 'https://viajararoma.com/wp-content/uploads/StaMariaInTrastevere.jpg',
   alert_timetable: 'Gratis último domingo de cada mes',
+  alert_visit: 'No te pierdas la escultura de Miguel Angel',
   timetable: [
     {
       id: 1,
