@@ -23,7 +23,7 @@ const Group = styled(ToggleButtonGroup)({
     },
   },
   '& .MuiButtonBase-root': {
-    width: 50,
+    width: 25,
     height: 25,
   }
 });
@@ -52,7 +52,7 @@ const WeekToogleButton = ({timetable, alert_timetable}) => {
   return <Box display='flex' flexDirection='column' alignItems='center'>
     {
       alert_timetable !== '' &&
-      <Alert severity="success" sx={{mt: 1, width: 340}}>{alert_timetable}</Alert>
+      <Alert severity="success" sx={{mt: 1, width: '100%'}}>{alert_timetable}</Alert>
     }
     <Group
       value={weekday}

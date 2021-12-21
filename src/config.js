@@ -1,4 +1,5 @@
 import {FlyToInterpolator} from 'react-map-gl';
+import {Colors} from './components/cards/TypeColors';
 
 export const INITIAL_VIEWPORT = {
   latitude: 41.895,
@@ -80,33 +81,51 @@ export const LEGEND = [
     }
   }
 ];
+
 export const LAYERS = [
   {
-    id: 'quartieri',
-    source: 'quartieri',
-    type: 'line',
-    paint: {
-      'line-color': '#444242',
-      'line-width': 0.5
-    }
-  },
-  {
-    id: 'data',
-    source: 'data',
+    id: 'visit',
+    source: 'visit',
     type: 'circle',
     paint: {
       'circle-radius': 6,
-      'circle-color': [
-        'match',
-        ['get', 'type'],
-        'Visitar', '#028090',
-        'Pasear', '#E42C64',
-        'Restauración', '#08FFC8',
-        'Dormir', '#0A2239',
-        'Comercio', '#fff200',
-        '#A3A3A3'
-      ],
+      'circle-color': Colors('visit')
     }
   },
-
+  {
+    id: 'walk',
+    source: 'walk',
+    type: 'circle',
+    paint: {
+      'circle-radius': 6,
+      'circle-color': Colors('walk')
+    }
+  },
+  {
+    id: 'accomodation',
+    source: 'accomodation',
+    type: 'circle',
+    paint: {
+      'circle-radius': 6,
+      'circle-color': Colors('accomodation')
+    }
+  },
+  {
+    id: 'commerce',
+    source: 'commerce',
+    type: 'circle',
+    paint: {
+      'circle-radius': 6,
+      'circle-color': Colors('commerce')
+    }
+  },
+  {
+    id: 'catering',
+    source: 'catering',
+    type: 'circle',
+    paint: {
+      'circle-radius': 6,
+      'circle-color': Colors('catering')
+    }
+  }
 ];

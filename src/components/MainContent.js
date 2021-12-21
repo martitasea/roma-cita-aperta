@@ -8,10 +8,11 @@ import {INITIAL_VIEWPORT, LAYERS} from '../config';
 import styled from '@mui/styles/styled';
 import {Popup} from 'react-map-gl';
 
-import PopupInfo from '../components/PopupInfo';
 import {useDispatch, useSelector} from 'react-redux';
-import {getFeatures} from '../modules/api/selectors';
-import {apiGetFeatures} from '../modules/api/actions';
+import {getVisitFeatures, getWalkFeatures, getAccomodationFeatures, getCommerceFeatures, getCateringFeatures} from '../modules/api/selectors';
+import {apiGetVisitFeatures, apiGetWalkFeatures, apiGetAccomodationFeatures, apiGetCommerceFeatures, apiGetCateringFeatures} from '../modules/api/actions';
+import CommerceCard from './cards/CommerceCard';
+import VisitCard from './cards/VisitCard';
 
 const CustomPopup = styled(Popup)({
   '& .mapboxgl-popup-content': {
@@ -23,21 +24,40 @@ const MainContent = ({mapStyle}) => {
   const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
   const [featureClicked, setFeatureClicked] = useState(undefined);
   const dispatch = useDispatch();
-  const data = useSelector(getFeatures);
+  const visit = useSelector(getVisitFeatures);
+  const walk = useSelector(getWalkFeatures);
+  const accomodation = useSelector(getAccomodationFeatures);
+  const commerce = useSelector(getCommerceFeatures);
+  const catering = useSelector(getCateringFeatures);
   const sources = useMemo (() => ({
-    data: {
+    visit: {
       type: 'geojson',
-      data: data
+      data: visit
     },
-    quartieri: {
+    walk: {
       type: 'geojson',
-      data: 'carto/quartieri-roma.geojson'
-    }
-  })
-  );
+      data: walk
+    },
+    accomodation: {
+      type: 'geojson',
+      data: accomodation
+    },
+    commerce: {
+      type: 'geojson',
+      data: commerce
+    },
+    catering: {
+      type: 'geojson',
+      data: catering
+    },
+  }));
   const layers = useMemo (() => LAYERS, []);
   useEffect(() => {
-    dispatch(apiGetFeatures());
+    dispatch(apiGetVisitFeatures());
+    dispatch(apiGetWalkFeatures());
+    dispatch(apiGetAccomodationFeatures());
+    dispatch(apiGetCommerceFeatures());
+    dispatch(apiGetCateringFeatures());
   }, []);
   const onViewportChange = (viewport) =>
     setViewport({
@@ -61,19 +81,35 @@ const MainContent = ({mapStyle}) => {
         anchor="bottom"
         closeButton={false}
       >
-        <PopupInfo
-          name={featureClicked.properties.name}
-          style={featureClicked.properties.style}
-          author={featureClicked.properties.author}
-          description={featureClicked.properties.description}
-          price={featureClicked.properties.price}
-          other={featureClicked.properties.other}
-          image={featureClicked.properties.image}
-          plan={featureClicked.properties.plan}
-          timetable={JSON.parse(featureClicked.properties.timetable)}
-          alert_timetable={featureClicked.properties.alert_timetable}
-          alert_visit={featureClicked.properties.alert_visit}
-        />
+        {featureClicked.properties.type === 'Comercio' ?
+          <CommerceCard
+            name={featureClicked.properties.name}
+            style={featureClicked.properties.style}
+            author={featureClicked.properties.author}
+            description={featureClicked.properties.description}
+            price={featureClicked.properties.price}
+            other={featureClicked.properties.other}
+            image={featureClicked.properties.image}
+            timetable={JSON.parse(featureClicked.properties.timetable)}
+            alert_timetable={featureClicked.properties.alert_timetable}
+            alert_visit={featureClicked.properties.alert_visit}
+          />
+          :
+          <VisitCard
+            name={featureClicked.properties.name}
+            style={featureClicked.properties.style}
+            author={featureClicked.properties.author}
+            category={featureClicked.properties.category}
+            description={featureClicked.properties.description}
+            price={featureClicked.properties.price}
+            web={featureClicked.properties.web}
+            doc={featureClicked.properties.doc}
+            image={featureClicked.properties.image}
+            timetable={JSON.parse(featureClicked.properties.timetable)}
+            alert_timetable={featureClicked.properties.alert_timetable}
+            alert_visit={featureClicked.properties.alert_visit}
+          />
+        }
       </CustomPopup>
     }
     <GeolocateControl
