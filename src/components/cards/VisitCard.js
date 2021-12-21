@@ -46,8 +46,12 @@ const VisitCard = ({
     '& .MuiButtonBase-root': {
       py:0,
       px:2,
-      color: Colors(COLOR_PROFILE)
+      color: '#a8a8a8',
+      '&.Mui-selected': {
+        color: Colors(COLOR_PROFILE),
+      },
     },
+
     '& .MuiTabs-indicator': {
       bottom:8,
       backgroundColor: Colors(COLOR_PROFILE)
