@@ -29,13 +29,14 @@ const Layout = ({headerLogo, headerTitle, mainContent, sidePanelContent}) => {
   const handleClose = () => setIsSidePanelOpen(!isSidePanelOpen);
   return (
     <>
-      <ResponsiveHeader
+      { widescreen && <ResponsiveHeader
         logo={headerLogo}
         title={headerTitle}
         onStartIconClick={widescreen ? undefined : handleClose}
         logoStyleProps={{width: 'auto'}}
       >
       </ResponsiveHeader>
+      }
       <SidePanel
         drawerWidth={DRAWER_WIDTH}
         anchor='left'
@@ -45,7 +46,7 @@ const Layout = ({headerLogo, headerTitle, mainContent, sidePanelContent}) => {
       >
         {sidePanelContent}
       </SidePanel>
-      <MainContent leftDrawer={isSidePanelOpen && widescreen}>
+      <MainContent leftDrawer={isSidePanelOpen && widescreen} style={{top: 0}}>
         {mainContent}
       </MainContent>
     </>

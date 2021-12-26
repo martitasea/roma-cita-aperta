@@ -11,8 +11,7 @@ import {Popup} from 'react-map-gl';
 import {useDispatch, useSelector} from 'react-redux';
 import {getVisitFeatures, getWalkFeatures, getAccomodationFeatures, getCommerceFeatures, getCateringFeatures} from '../modules/api/selectors';
 import {apiGetVisitFeatures, apiGetWalkFeatures, apiGetAccomodationFeatures, apiGetCommerceFeatures, apiGetCateringFeatures} from '../modules/api/actions';
-import CommerceCard from './cards/CommerceCard';
-import VisitCard from './cards/VisitCard';
+import PoiCard from './card/PoiCard';
 
 const CustomPopup = styled(Popup)({
   '& .mapboxgl-popup-content': {
@@ -81,35 +80,7 @@ const MainContent = ({mapStyle}) => {
         anchor="bottom"
         closeButton={false}
       >
-        {featureClicked.properties.type === 'Comercio' ?
-          <CommerceCard
-            name={featureClicked.properties.name}
-            style={featureClicked.properties.style}
-            author={featureClicked.properties.author}
-            description={featureClicked.properties.description}
-            price={featureClicked.properties.price}
-            other={featureClicked.properties.other}
-            image={featureClicked.properties.image}
-            timetable={JSON.parse(featureClicked.properties.timetable)}
-            alert_timetable={featureClicked.properties.alert_timetable}
-            alert_visit={featureClicked.properties.alert_visit}
-          />
-          :
-          <VisitCard
-            name={featureClicked.properties.name}
-            style={featureClicked.properties.style}
-            author={featureClicked.properties.author}
-            category={featureClicked.properties.category}
-            description={featureClicked.properties.description}
-            price={featureClicked.properties.price}
-            web={featureClicked.properties.web}
-            doc={featureClicked.properties.doc}
-            image={featureClicked.properties.image}
-            timetable={JSON.parse(featureClicked.properties.timetable)}
-            alert_timetable={featureClicked.properties.alert_timetable}
-            alert_visit={featureClicked.properties.alert_visit}
-          />
-        }
+        <PoiCard poi={featureClicked.properties}/>
       </CustomPopup>
     }
     <GeolocateControl
@@ -122,7 +93,7 @@ const MainContent = ({mapStyle}) => {
 };
 
 MainContent.propTypes = {
-  mapStyle: PropTypes.string.isRequired
+  mapStyle: PropTypes.string.isRequired,
 };
 
 export default MainContent;

@@ -1,9 +1,8 @@
 import {FlyToInterpolator} from 'react-map-gl';
-import {Colors} from './components/cards/TypeColors';
 
 export const INITIAL_VIEWPORT = {
   latitude: 41.895,
-  longitude: 12.490,
+  longitude: 12.475,
   zoom: 13,
   bearing: 0,
   pitch: 0,
@@ -39,49 +38,14 @@ export const MAPSTYLES = [
 export const INITIAL_MAPSTYLE_URL = MAPSTYLES[2].url;
 export const WIDESCREEN_STEP = '770px';
 export const DRAWER_WIDTH = '300px';
-export const LEGEND = [
-  {
-    'name': 'Visitar',
-    'type': 'symbol',
-    'paint': {
-      'color': '#028090',
-      'width': 12
-    }
-  },
-  {
-    'name': 'Pasear',
-    'type': 'symbol',
-    'paint': {
-      'color': '#E42C64',
-      'width': 12
-    }
-  },
-  {
-    'name': 'Restauración',
-    'type': 'symbol',
-    'paint': {
-      'color': '#08FFC8',
-      'width': 12
-    }
-  },
-  {
-    'name': 'Dormir',
-    'type': 'symbol',
-    'paint': {
-      'color': '#0A2239',
-      'width': 12
-    }
-  },
-  {
-    'name': 'Comercio',
-    'type': 'symbol',
-    'paint': {
-      'color': '#fff200',
-      'width': 12
-    }
-  }
-];
-
+export const COLOR_PROFILE = {
+  visit: '#028090',
+  walk: '#E42C64',
+  accomodation: '#0A2239',
+  commerce: '#fff200',
+  catering: '#08FFC8'
+};
+export const Colors = (layerId) => COLOR_PROFILE[layerId];
 export const LAYERS = [
   {
     id: 'visit',
@@ -89,7 +53,7 @@ export const LAYERS = [
     type: 'circle',
     paint: {
       'circle-radius': 6,
-      'circle-color': Colors('visit')
+      'circle-color': COLOR_PROFILE.visit
     }
   },
   {
@@ -98,7 +62,7 @@ export const LAYERS = [
     type: 'circle',
     paint: {
       'circle-radius': 6,
-      'circle-color': Colors('walk')
+      'circle-color': COLOR_PROFILE.walk
     }
   },
   {
@@ -107,7 +71,7 @@ export const LAYERS = [
     type: 'circle',
     paint: {
       'circle-radius': 6,
-      'circle-color': Colors('accomodation')
+      'circle-color': COLOR_PROFILE.accomodation
     }
   },
   {
@@ -116,7 +80,7 @@ export const LAYERS = [
     type: 'circle',
     paint: {
       'circle-radius': 6,
-      'circle-color': Colors('commerce')
+      'circle-color': COLOR_PROFILE.commerce
     }
   },
   {
@@ -125,7 +89,57 @@ export const LAYERS = [
     type: 'circle',
     paint: {
       'circle-radius': 6,
-      'circle-color': Colors('catering')
+      'circle-color': COLOR_PROFILE.catering
     }
   }
 ];
+export const LEGEND = [
+  {
+    'id': 'visit',
+    'name': 'Visitar',
+    'type': 'symbol',
+    'paint': {
+      'color': Colors('visit'),
+      'width': 12
+    }
+  },
+  {
+    'id': 'walk',
+    'name': 'Pasear',
+    'type': 'symbol',
+    'paint': {
+      'color': Colors('walk'),
+      'width': 12
+    }
+  },
+  {
+    'id': 'catering',
+    'name': 'Restauración',
+    'type': 'symbol',
+    'paint': {
+      'color': Colors('catering'),
+      'width': 12
+    }
+  },
+  {
+    'id': 'accomodation',
+    'name': 'Dormir',
+    'type': 'symbol',
+    'paint': {
+      'color': Colors('accomodation'),
+      'width': 12
+    }
+  },
+  {
+    'id': 'commerce',
+    'name': 'Comercio',
+    'type': 'symbol',
+    'paint': {
+      'color': Colors('commerce'),
+      'width': 12
+    }
+  }
+];
+
+
+
