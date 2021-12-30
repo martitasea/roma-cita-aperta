@@ -11,7 +11,7 @@ const Template = args => <HeaderCard {...args}/>;
 export const Default = Template.bind({});
 Default.args = {
   poi: {
-    id: '1',
+    id: 1,
     type: 'visit',
     name: 'Basílica de Santa María en Trastevere',
     style: 'Románico',

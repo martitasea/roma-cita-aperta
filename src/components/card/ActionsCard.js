@@ -8,12 +8,14 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import Chip from '@mui/material/Chip';
 import {poiFeature} from '../proptypes/poiFeature';
 import {Colors} from '../../config';
+import PropTypes from 'prop-types';
 
-const ActionsCard = ({poi}) => {
+const ActionsCard = ({poi, onVisitedPoi}) => {
   const colorProfile = Colors(poi.type);
   const handleWebOpen = () => poi.web && window.open(`${poi.web}`, '_blank');
   const handleDocOpen = () => poi.web && window.open(`${poi.doc}`, '_blank');
   const handleBookOpen = () => poi.web && window.open(`${poi.book}`, '_blank');
+  const handleVisited = () => onVisitedPoi(poi.id);
   return <CardActions sx={{display: 'flex', justifyContent: 'space-between', mr: 1}}>
     <Box>
       {
@@ -27,11 +29,11 @@ const ActionsCard = ({poi}) => {
         </IconButton>
       }
       {
-        poi.book && <IconButton>
-          <LocalActivityIcon onClick={handleBookOpen}/>
+        poi.book && <IconButton onClick={handleBookOpen}>
+          <LocalActivityIcon/>
         </IconButton>
       }
-      <IconButton>
+      <IconButton onClick={handleVisited}>
         <VisibilityIcon/>
       </IconButton>
     </Box>
@@ -43,6 +45,7 @@ const ActionsCard = ({poi}) => {
 
 ActionsCard.propTypes = {
   poi: poiFeature,
+  onVisitedPoi: PropTypes.func,
 };
 
 export default ActionsCard;

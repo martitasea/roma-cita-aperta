@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {styled} from '@mui/material/styles';
 
@@ -7,8 +7,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-
-import {LEGEND} from '../config';
 
 const classes = {
   root: 'MapLegend-root',
@@ -33,16 +31,11 @@ const Root = styled(List)({
   },
 });
 
-const MapLegend = ({fields, sx, onLayerVisibility}) => {
-  const [selectedVisibleLayers, setSelectedVisibleLayers] = useState(LEGEND.map(type => type.id));
-  const handleLayersVisibility = {
-    ...selectedVisibleLayers,
-
-  };
+const MapLegend = ({fields, sx}) => {
   return (
     <Root dense className={classes.root} sx={sx} fields={fields}>
       {
-        fields.map(({id, name, type, paint, icon}, index) => {
+        fields.map(({name, type, paint, icon}, index) => {
           const swatchVisible = {
             border: paint?.outlineWidth || undefined,
             borderColor: paint?.outlineColor || undefined,
@@ -51,20 +44,20 @@ const MapLegend = ({fields, sx, onLayerVisibility}) => {
             width: type === 'symbol' ? paint.width : '100%',
             height: type === 'line' || type === 'symbol' ? paint.width : '100%'
           };
-          const swatchInvisible = {
+          /*const swatchInvisible = {
             border: paint?.outlineWidth || undefined,
             borderColor: paint?.outlineColor || undefined,
             bgcolor: 'transparent',
             borderRadius: type === 'symbol' ? '50%' : 0,
             width: type === 'symbol' ? paint.width : '100%',
             height: type === 'line' || type === 'symbol' ? paint.width : '100%'
-          };
+          };*/
           return (
             <ListItem className={classes.item} key={index}>
-              <Box className={classes.swatch} onClick={(e) => handleLayersVisibility(e, id)}>
+              <Box className={classes.swatch}>
                 {
                   type === 'icon' ? icon :
-                    <Box sx={selectedVisibleLayers.includes(id) ? swatchVisible : swatchInvisible}/>
+                    <Box sx={swatchVisible}/>
                 }
               </Box>
               <ListItemText sx={{m: 0, p: 0}}>

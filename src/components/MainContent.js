@@ -4,13 +4,25 @@ import PropTypes from 'prop-types';
 import {GeolocateControl} from 'react-map-gl';
 import Map from '@geomatico/geocomponents/Map';
 
-import {INITIAL_VIEWPORT, LAYERS} from '../config';
+import {INITIAL_VIEWPORT, LAYERS, VISITED_FEATURES} from '../config';
 import styled from '@mui/styles/styled';
 import {Popup} from 'react-map-gl';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {getVisitFeatures, getWalkFeatures, getAccomodationFeatures, getCommerceFeatures, getCateringFeatures} from '../modules/api/selectors';
-import {apiGetVisitFeatures, apiGetWalkFeatures, apiGetAccomodationFeatures, apiGetCommerceFeatures, apiGetCateringFeatures} from '../modules/api/actions';
+import {
+  getVisitFeatures,
+  getWalkFeatures,
+  getAccomodationFeatures,
+  getCommerceFeatures,
+  getCateringFeatures
+} from '../modules/api/selectors';
+import {
+  apiGetVisitFeatures,
+  apiGetWalkFeatures,
+  apiGetAccomodationFeatures,
+  apiGetCommerceFeatures,
+  apiGetCateringFeatures
+} from '../modules/api/actions';
 import PoiCard from './card/PoiCard';
 
 const CustomPopup = styled(Popup)({
@@ -28,7 +40,7 @@ const MainContent = ({mapStyle}) => {
   const accomodation = useSelector(getAccomodationFeatures);
   const commerce = useSelector(getCommerceFeatures);
   const catering = useSelector(getCateringFeatures);
-  const sources = useMemo (() => ({
+  const sources = useMemo(() => ({
     visit: {
       type: 'geojson',
       data: visit
@@ -50,7 +62,8 @@ const MainContent = ({mapStyle}) => {
       data: catering
     },
   }));
-  const layers = useMemo (() => LAYERS, []);
+
+  const layers = useMemo (() => LAYERS, [VISITED_FEATURES]);
   useEffect(() => {
     dispatch(apiGetVisitFeatures());
     dispatch(apiGetWalkFeatures());
@@ -63,6 +76,8 @@ const MainContent = ({mapStyle}) => {
       ...viewport
     });
   const handleOnClick = (e) => setFeatureClicked(e.features && e.features[0]);
+  const handleVisitedPoi = (id) => localStorage.setItem('roma-cita-aperta.visitedFeatures', id);
+
   return <Map
     mapStyle={mapStyle}
     viewport={viewport}
@@ -71,7 +86,6 @@ const MainContent = ({mapStyle}) => {
     layers={layers}
     interactiveLayerIds={layers.map(({id}) => id)}
     onClick={handleOnClick}
-    // mapboxAccessToken={process.env.MAPBOX_ACCESS_TOKEN} // Token necesario para ver datos de mapbox o usar mapbox-gl-js v2 (react-map-gl 6)
   >
     {
       featureClicked && <CustomPopup
@@ -80,7 +94,7 @@ const MainContent = ({mapStyle}) => {
         anchor="bottom"
         closeButton={false}
       >
-        <PoiCard poi={featureClicked.properties}/>
+        <PoiCard poi={featureClicked.properties} onVisitedPoi={handleVisitedPoi}/>
       </CustomPopup>
     }
     <GeolocateControl
@@ -94,6 +108,7 @@ const MainContent = ({mapStyle}) => {
 
 MainContent.propTypes = {
   mapStyle: PropTypes.string.isRequired,
+  onSidePanelOpen: PropTypes.func,
 };
 
 export default MainContent;

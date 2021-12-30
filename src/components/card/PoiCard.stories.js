@@ -11,7 +11,7 @@ const Template = args => <PoiCard {...args}/>;
 export const Visit = Template.bind({});
 Visit.args = {
   poi: {
-    id: '1',
+    id: 2,
     type: 'visit',
     name: 'Basílica de Santa María en Trastevere',
     style: 'Románico',
@@ -23,13 +23,16 @@ Visit.args = {
     image: 'https://viajararoma.com/wp-content/uploads/StaMariaInTrastevere.jpg',
     alert_timetable: 'Gratis último domingo de cada mes',
     alert_visit: 'No te pierdas la escultura de Miguel Angel',
+    doc: 'https://www.google.com/',
+    web: 'https://www.google.com/',
+    book: 'https://www.google.com/',
   }
 };
 
 export const Walk = Template.bind({});
 Walk.args = {
   poi: {
-    id: '1',
+    id: 3,
     type: 'walk',
     name: 'Piazza del Campidoglio',
     style: 'Renacimiento',
@@ -45,7 +48,7 @@ Walk.args = {
 export const Commerce = Template.bind({});
 Commerce.args = {
   poi: {
-    id: '1',
+    id: 4,
     type: 'commerce',
     name: 'Mercado de Porta Portese',
     category: 'Mercado',
@@ -58,7 +61,7 @@ Commerce.args = {
 export const Accomodation = Template.bind({});
 Accomodation.args = {
   poi: {
-    id: '1',
+    id: 5,
     type: 'accomodation',
     name: 'Apartamento Via Cicerone',
     category: 'Mercado',

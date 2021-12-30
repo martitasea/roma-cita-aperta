@@ -42,19 +42,24 @@ export const COLOR_PROFILE = {
   visit: '#028090',
   walk: '#E42C64',
   accomodation: '#0A2239',
-  commerce: '#fff200',
-  catering: '#08FFC8'
+  commerce: '#ceac23',
+  catering: '#a974a3',
+  seen: '#4b4b4b'
 };
 export const Colors = (layerId) => COLOR_PROFILE[layerId];
+export const VISITED_FEATURES = localStorage.getItem('roma-cita-aperta.visitedFeatures');
+
 export const LAYERS = [
   {
     id: 'visit',
     source: 'visit',
     type: 'circle',
     paint: {
-      'circle-radius': 6,
-      'circle-color': COLOR_PROFILE.visit
-    }
+      'circle-radius': ['case', ['==', ['get', 'id'], VISITED_FEATURES], 4.5, 6],
+      'circle-color': ['case', ['==', ['get', 'id'], VISITED_FEATURES], 'transparent', COLOR_PROFILE.visit],
+      'circle-stroke-color': COLOR_PROFILE.visit,
+      'circle-stroke-width': ['case', ['==', ['get', 'id'], VISITED_FEATURES], 1.5, 0],
+    },
   },
   {
     id: 'walk',

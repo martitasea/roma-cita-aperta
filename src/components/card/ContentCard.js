@@ -6,7 +6,7 @@ import {TabContext} from '@mui/lab';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from '@mui/lab/TabPanel';
-import WeekToogleButton from '../WeekToogleButton';
+/*import WeekToogleButton from '../WeekToogleButton';*/
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';

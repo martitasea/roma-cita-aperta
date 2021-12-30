@@ -8,7 +8,7 @@ const preloadedState = {};
 
 const store = createStore(
   combineReducers({
-    api: apiReducer
+    api: apiReducer,
   }),
   preloadedState,
   composeWithDevTools(applyMiddleware(apiMiddleware, thunk))

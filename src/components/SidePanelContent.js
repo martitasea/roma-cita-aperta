@@ -9,7 +9,7 @@ import MapLegend from '@geomatico/geocomponents/MapLegend';
 
 import SectionTitle from './SectionTitle';
 
-import {LEGEND, MAPSTYLES} from '../config';
+import {LEGEND, MAPSTYLES, VISITED_FEATURES} from '../config';
 
 const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
   return <Stack justifyContent='space-between' sx={{height: '93.5vh'}}>
@@ -23,9 +23,11 @@ const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
           typographyStyleProps={{fontSize: 14}}
         />
       </Box>
+      <p>{VISITED_FEATURES}</p>
       <Box mb={2}>
         <SectionTitle titleKey="Leyenda"/>
-        <MapLegend fields={LEGEND}
+        <MapLegend
+          fields={LEGEND}
           sx={{
             '& .MapLegend-swatch': {
               margin: '0px 8px 0px 0px',
@@ -33,8 +35,8 @@ const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
             },
             '& .MapLegend-text': {
               fontSize: 14
-            }}
-          }
+            }
+          }}
         />
       </Box>
     </Box>

@@ -1,6 +1,5 @@
 import React from 'react';
 import MapLegend from './MapLegend';
-import AddLocationIcon from '@mui/icons-material/AddLocation';
 import {LEGEND} from '../config';
 
 export default {
