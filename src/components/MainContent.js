@@ -74,8 +74,7 @@ const MainContent = ({mapStyle}) => {
   const onViewportChange = (viewport) =>
     setViewport({
       ...viewport
-    });
-  const handleOnClick = (e) => setFeatureClicked(e.features && e.features[0]);
+    });  const handleOnClick = (e) => setFeatureClicked(e.features && e.features[0]);
   const handleVisitedPoi = (id) => localStorage.setItem('roma-cita-aperta.visitedFeatures', id);
 
   return <Map

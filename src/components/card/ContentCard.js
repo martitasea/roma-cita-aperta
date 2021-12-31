@@ -10,6 +10,12 @@ import TabPanel from '@mui/lab/TabPanel';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
+import styled from '@mui/styles/styled';
+
+
+const PlanImage = styled('img')({
+  maxWidth: '50vw'
+});
 
 const ContentCard = ({poi}) => {
   const colorProfile = Colors(poi.type);
@@ -24,7 +30,6 @@ const ContentCard = ({poi}) => {
         color: colorProfile,
       },
     },
-
     '& .MuiTabs-indicator': {
       bottom:8,
       backgroundColor: colorProfile,
@@ -49,7 +54,7 @@ const ContentCard = ({poi}) => {
         </Box>
       </TabPanel>
       <TabPanel value="plan" index={2} sx={{m: 1, p: 0}}>
-        <img alt={name} src={poi.plan} width="350"/>
+        <PlanImage alt={name} src={poi.plan}/>
       </TabPanel>
     </TabContext>
   </CardContent>;
