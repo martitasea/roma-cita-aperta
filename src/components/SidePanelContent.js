@@ -9,12 +9,13 @@ import MapLegend from '@geomatico/geocomponents/MapLegend';
 
 import SectionTitle from './SectionTitle';
 
-import {LEGEND, MAPSTYLES, VISITED_FEATURES} from '../config';
+import {LEGEND, MAPSTYLES} from '../config';
+import Divider from '@mui/material/Divider';
 
 const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
-  return <Stack justifyContent='space-between' sx={{height: '93.5vh'}}>
+  return <Stack justifyContent="space-between" sx={{height: '85vh', width: '80vw'}}>
     <Box>
-      <Box mb={2}>
+      <Box>
         <SectionTitle titleKey="Estilo Mapa Base"/>
         <BaseMapList
           styles={MAPSTYLES}
@@ -23,8 +24,7 @@ const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
           typographyStyleProps={{fontSize: 14}}
         />
       </Box>
-      <p>{VISITED_FEATURES}</p>
-      <Box mb={2}>
+      <Box>
         <SectionTitle titleKey="Leyenda"/>
         <MapLegend
           fields={LEGEND}

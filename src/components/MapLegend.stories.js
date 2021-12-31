@@ -3,7 +3,7 @@ import MapLegend from './MapLegend';
 import {LEGEND} from '../config';
 
 export default {
-  title: 'SidePanelContent/MapLegend',
+  title: 'SidePanel/MapLegend',
   component: MapLegend,
 };
 

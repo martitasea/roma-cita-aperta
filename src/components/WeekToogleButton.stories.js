@@ -2,7 +2,7 @@ import React from 'react';
 import WeekToogleButton from './WeekToogleButton';
 
 export default {
-  title: 'Common/WeekToogleButton',
+  title: 'SidePanel/WeekToogleButton',
   component: WeekToogleButton
 };
 

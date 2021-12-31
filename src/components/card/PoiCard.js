@@ -7,7 +7,7 @@ import ContentCard from './ContentCard';
 import ActionsCard from './ActionsCard';
 
 const PoiCard = ({poi, onVisitedPoi}) => {
-  return <Card sx={{width: 395}} elevation={12}>
+  return <Card sx={{width:'90vw'}} elevation={12}>
     <HeaderCard poi={poi}/>
     <ContentCard poi={poi}/>
     <ActionsCard poi={poi} onVisitedPoi={onVisitedPoi}/>
