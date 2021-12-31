@@ -10,7 +10,6 @@ import MapLegend from '@geomatico/geocomponents/MapLegend';
 import SectionTitle from './SectionTitle';
 
 import {LEGEND, MAPSTYLES} from '../config';
-import Divider from '@mui/material/Divider';
 
 const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
   return <Stack justifyContent="space-between" sx={{height: '85vh', width: '80vw'}}>
