@@ -13,15 +13,22 @@ const Template = args => <Box m={2}>
 
 export const Default = Template.bind({});
 Default.args = {
-  featuresName: [
+  featuresList: [
     {
-      label: 'opcion1'
+      id: 1,
+      label: 'opcion1',
     },
     {
-      label: 'apcion1'
+      id: 2,
+      label: 'apcion2',
     },
     {
-      label: 'bpcion1'
+      id: 3,
+      label: 'bpcion3',
     },
-  ]
+  ],
+  selectedFeature: {
+    id: 2,
+    label: 'apcion2',
+  },
 };

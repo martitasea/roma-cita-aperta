@@ -12,10 +12,14 @@ import SectionTitle from './SectionTitle';
 import {LEGEND, MAPSTYLES} from '../config';
 import AutocompleteInput from './AutocompleteInput';
 
-const SidePanelContent = ({mapStyle, onMapStyleChanged, featuresName, onFeatureSelect}) => {
+const SidePanelContent = ({mapStyle, onMapStyleChanged, featuresList, selectedFeature, onFeatureSelect}) => {
   return <Stack justifyContent="space-between" sx={{height: '85vh'}}>
     <Box>
-      <AutocompleteInput featuresName={featuresName} onFeatureSelect={onFeatureSelect}/>
+      <AutocompleteInput
+        featuresList={featuresList}
+        selectedFeature={selectedFeature}
+        onFeatureSelect={onFeatureSelect}
+      />
       <Box>
         <SectionTitle titleKey="Estilo Mapa Base"/>
         <BaseMapList
@@ -45,16 +49,17 @@ const SidePanelContent = ({mapStyle, onMapStyleChanged, featuresName, onFeatureS
 };
 
 SidePanelContent.propTypes = {
-  featuresName: PropTypes.arrayOf(PropTypes.shape({
+  featuresList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
     label: PropTypes.string,
-    viewport: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number
-    })
   })).isRequired,
   mapStyle: PropTypes.string.isRequired,
   onMapStyleChanged: PropTypes.func.isRequired,
-  onFeatureSelect: PropTypes.func.isRequired
+  onFeatureSelect: PropTypes.func.isRequired,
+  selectedFeature: PropTypes.shape({
+    id: PropTypes.number,
+    label: PropTypes.string,
+  }),
 };
 
 export default SidePanelContent;

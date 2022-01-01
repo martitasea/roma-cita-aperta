@@ -12,22 +12,24 @@ import {getVisitFeatures} from '../modules/api/selectors';
 
 const Home = () => {
   const [mapStyle, setMapStyle] = useState(INITIAL_MAPSTYLE_URL);
+  const [selectedFeature, setSelectedFeature] = useState(null);
   const visit = useSelector(getVisitFeatures);
   const visitFeaturesList = visit.features.map(feature => {
     return {
       id: feature.properties.id,
       label: feature.properties.name,
-      viewport: {
-        latitude: feature.geometry.coordinates[0],
-        longitude: feature.geometry.coordinates[1]
-      }
     };
   });
+  const handleFeatureSelect = (fea) => {
+    setSelectedFeature(fea);
+  };
 
   const sidePanelContent = <SidePanelContent
     mapStyle={mapStyle}
     onMapStyleChanged={setMapStyle}
-    featuresName={visitFeaturesList}
+    featuresList={visitFeaturesList}
+    selectedFeature={selectedFeature}
+    onFeatureSelect={handleFeatureSelect}
   />;
 
   const mainContent = <MainContent
@@ -36,7 +38,7 @@ const Home = () => {
 
   return <Layout
     headerLogo={<img src={Logo} height={50} alt='Roma Cità Aperta'/>}
-    headerTitle={<Typography variant='h5' sx={{mt:3.2, ml:2}}>ROMA CITÀ APERTA</Typography>}
+    headerTitle={<Typography sx={{mt:3.2, ml:2, fontSize: '24px'}}>ROMA CITÀ APERTA</Typography>}
     sidePanelContent={sidePanelContent}
     mainContent={mainContent}
   />;
