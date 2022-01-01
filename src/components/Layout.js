@@ -54,7 +54,7 @@ Layout.propTypes = {
   headerLogo: PropTypes.element,
   headerTitle: PropTypes.string.isRequired,
   sidePanelContent: PropTypes.element.isRequired,
-  mainContent: PropTypes.element.isRequired
+  mainContent: PropTypes.element.isRequired,
 };
 
 export default Layout;

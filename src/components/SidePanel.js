@@ -24,7 +24,7 @@ const SidePanel = ({sidePanelContent, isOpen, onClose}) => {
       <Box sx={{width: '100%', height: '60px', backgroundColor: 'primary.main'}}>
         <Typography variant='h6' sx={{color: 'white', position: 'absolute', left: 48, top: 16}}>ROMA CITÁ APERTA</Typography>
       </Box>
-      <Box sx={{position: 'absolute', left: 20, top: 50}}>
+      <Box m={2}>
         {sidePanelContent}
       </Box>
     </Drawer>
