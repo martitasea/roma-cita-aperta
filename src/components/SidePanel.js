@@ -4,7 +4,7 @@ import Drawer from '@mui/material/Drawer';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {WIDESCREEN_STEP, DRAWER_WIDTH} from '../config';
 import MenuIcon from '@mui/icons-material/Menu';
-import {IconButton} from '@mui/material';
+import {AppBar, IconButton, Toolbar} from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
@@ -12,19 +12,36 @@ const SidePanel = ({sidePanelContent, isOpen, onClose}) => {
   const widescreen = useMediaQuery(`(min-width: ${WIDESCREEN_STEP})`, {noSsr: true});
   const handleSidePanelClose = () => onClose && onClose();
   return <>
-    <IconButton sx={{position: 'absolute', left: 10, top: 10, zIndex: 1300, color: widescreen? 'white' : isOpen? 'white' : 'black'}} onClick={handleSidePanelClose}>
-      <MenuIcon size="large"/>
-    </IconButton>
+    {
+      widescreen || !isOpen ?
+        <IconButton
+          sx={{position: 'absolute', left: 8, top: 8, zIndex: 1300, color: widescreen ? 'white' : 'black'}}
+          onClick={handleSidePanelClose}>
+          <MenuIcon size="large"/>
+        </IconButton> : undefined
+    }
     <Drawer
       anchor='left'
       open={isOpen}
-      PaperProps={{sx:{width: widescreen? DRAWER_WIDTH : '90%'}}}
+      PaperProps={{sx: {width: widescreen ? DRAWER_WIDTH : '90%'}}}
       onClose={handleSidePanelClose}
     >
-      <Box sx={{width: '100%', height: '60px', backgroundColor: 'primary.main'}}>
-        <Typography variant='h6' sx={{color: 'white', position: 'absolute', left: 48, top: 16}}>ROMA CITÁ APERTA</Typography>
-      </Box>
-      <Box sx={{position: 'absolute', left: 20, top: 50}}>
+      <AppBar position='static'>
+        <Toolbar>
+          <IconButton
+            size='large'
+            edge='start'
+            color='inherit'
+            onClick={handleSidePanelClose}
+          >
+            <MenuIcon/>
+          </IconButton>
+          <Typography variant='h6' component='div' sx={{color: 'white', pt: 0.25}}>
+            ROMA CITÁ APERTA
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Box sx={{p:2}}>
         {sidePanelContent}
       </Box>
     </Drawer>

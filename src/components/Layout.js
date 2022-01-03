@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import styled from '@mui/styles/styled';
@@ -22,11 +22,10 @@ const MainContent = styled(Box, {
   left: leftDrawer ? DRAWER_WIDTH : 0
 }));
 
-const Layout = ({headerLogo, headerTitle, mainContent, sidePanelContent}) => {
+const Layout = ({headerLogo, headerTitle, mainContent, isSidePanelOpen, onSidePanelOpen, sidePanelContent}) => {
   const widescreen = useMediaQuery(`(min-width: ${WIDESCREEN_STEP})`, {noSsr: true});
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
 
-  const handleSidePanelOpen = () => setIsSidePanelOpen(!isSidePanelOpen);
+  const handleSidePanelOpen = () => onSidePanelOpen();
   return (
     <>
       {widescreen && <ResponsiveHeader
@@ -43,7 +42,7 @@ const Layout = ({headerLogo, headerTitle, mainContent, sidePanelContent}) => {
         sidePanelContent={sidePanelContent}
       >
       </SidePanel>
-      <MainContent leftDrawer={isSidePanelOpen && widescreen} style={{top: 0}} onSidePanelOpen={(e) => console.log(e)}>
+      <MainContent leftDrawer={isSidePanelOpen && widescreen} style={{top: 0}}>
         {mainContent}
       </MainContent>
     </>
@@ -54,7 +53,9 @@ Layout.propTypes = {
   headerLogo: PropTypes.element,
   headerTitle: PropTypes.string.isRequired,
   sidePanelContent: PropTypes.element.isRequired,
-  mainContent: PropTypes.element.isRequired
+  isSidePanelOpen: PropTypes.bool.isRequired,
+  mainContent: PropTypes.element.isRequired,
+  onSidePanelOpen: PropTypes.func
 };
 
 export default Layout;

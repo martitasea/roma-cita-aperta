@@ -10,10 +10,16 @@ import MapLegend from '@geomatico/geocomponents/MapLegend';
 import SectionTitle from './SectionTitle';
 
 import {LEGEND, MAPSTYLES} from '../config';
+import AutocompleteInput from './AutocompleteInput';
 
-const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
-  return <Stack justifyContent="space-between" sx={{height: '85vh', width: '80vw'}}>
+const SidePanelContent = ({mapStyle, onMapStyleChanged, featuresList, selectedFeature, onFeatureSelect}) => {
+  return <Stack justifyContent="space-between" sx={{height: '81vh'}}>
     <Box>
+      <AutocompleteInput
+        featuresList={featuresList}
+        selectedFeature={selectedFeature}
+        onFeatureSelect={onFeatureSelect}
+      />
       <Box>
         <SectionTitle titleKey="Estilo Mapa Base"/>
         <BaseMapList
@@ -43,8 +49,17 @@ const SidePanelContent = ({mapStyle, onMapStyleChanged}) => {
 };
 
 SidePanelContent.propTypes = {
+  featuresList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    label: PropTypes.string,
+  })).isRequired,
   mapStyle: PropTypes.string.isRequired,
-  onMapStyleChanged: PropTypes.func.isRequired
+  onMapStyleChanged: PropTypes.func.isRequired,
+  onFeatureSelect: PropTypes.func.isRequired,
+  selectedFeature: PropTypes.shape({
+    id: PropTypes.number,
+    label: PropTypes.string,
+  }),
 };
 
 export default SidePanelContent;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {GeolocateControl} from 'react-map-gl';
 import Map from '@geomatico/geocomponents/Map';
 
-import {INITIAL_VIEWPORT, LAYERS, VISITED_FEATURES} from '../config';
+import {LAYERS, VISITED_FEATURES} from '../config';
 import styled from '@mui/styles/styled';
 import {Popup} from 'react-map-gl';
 
@@ -24,6 +24,7 @@ import {
   apiGetCateringFeatures
 } from '../modules/api/actions';
 import PoiCard from './card/PoiCard';
+import {getViewport} from '../modules/app/selectors';
 
 const CustomPopup = styled(Popup)({
   '& .mapboxgl-popup-content': {
@@ -31,10 +32,10 @@ const CustomPopup = styled(Popup)({
   }
 });
 
-const MainContent = ({mapStyle}) => {
-  const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
+const MainContent = ({mapStyle, onViewportChange}) => {
   const [featureClicked, setFeatureClicked] = useState(undefined);
   const dispatch = useDispatch();
+  const viewport = useSelector(getViewport);
   const visit = useSelector(getVisitFeatures);
   const walk = useSelector(getWalkFeatures);
   const accomodation = useSelector(getAccomodationFeatures);
@@ -71,16 +72,18 @@ const MainContent = ({mapStyle}) => {
     dispatch(apiGetCommerceFeatures());
     dispatch(apiGetCateringFeatures());
   }, []);
-  const onViewportChange = (viewport) =>
-    setViewport({
-      ...viewport
-    });  const handleOnClick = (e) => setFeatureClicked(e.features && e.features[0]);
+
+  const handleViewportChange = ({width, height, latitude, longitude, zoom, bearing, pitch, transitionDuration= undefined, transitionInterpolator= undefined}) =>
+    onViewportChange({
+      width, height, latitude, longitude, zoom, bearing, pitch, transitionDuration, transitionInterpolator
+    });
+  const handleOnClick = (e) => setFeatureClicked(e.features && e.features[0]);
   const handleVisitedPoi = (id) => localStorage.setItem('roma-cita-aperta.visitedFeatures', id);
 
   return <Map
     mapStyle={mapStyle}
     viewport={viewport}
-    onViewportChange={onViewportChange}
+    onViewportChange={handleViewportChange}
     sources={sources}
     layers={layers}
     interactiveLayerIds={layers.map(({id}) => id)}
@@ -108,6 +111,7 @@ const MainContent = ({mapStyle}) => {
 MainContent.propTypes = {
   mapStyle: PropTypes.string.isRequired,
   onSidePanelOpen: PropTypes.func,
+  onViewportChange: PropTypes.func,
 };
 
 export default MainContent;
