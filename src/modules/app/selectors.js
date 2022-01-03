@@ -1,1 +1,1 @@
-export const getViewport = (state) => state.app.map.viewport;
+export const getViewport = (state) => state.app.viewport;

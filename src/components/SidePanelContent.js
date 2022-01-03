@@ -13,7 +13,7 @@ import {LEGEND, MAPSTYLES} from '../config';
 import AutocompleteInput from './AutocompleteInput';
 
 const SidePanelContent = ({mapStyle, onMapStyleChanged, featuresList, selectedFeature, onFeatureSelect}) => {
-  return <Stack justifyContent="space-between" sx={{height: '85vh'}}>
+  return <Stack justifyContent="space-between" sx={{height: '81vh'}}>
     <Box>
       <AutocompleteInput
         featuresList={featuresList}
