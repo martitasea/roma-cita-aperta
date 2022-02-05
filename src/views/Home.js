@@ -9,7 +9,7 @@ import Logo from '../components/img/Logo.png';
 import {INITIAL_MAPSTYLE_URL, WIDESCREEN_STEP} from '../config';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {getVisitFeatures} from '../modules/api/selectors';
+import {getVisitFeatures, getWalkFeatures} from '../modules/api/selectors';
 import {setViewport} from '../modules/app/actions';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
@@ -21,6 +21,7 @@ const Home = () => {
   const [selectedFeature, setSelectedFeature] = useState(null);
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(widescreen? true : false);
   const visit = useSelector(getVisitFeatures);
+  const walk = useSelector(getWalkFeatures);
   const visitFeaturesList = visit.features.map(feature => {
     return {
       id: feature.properties.id,
@@ -29,6 +30,15 @@ const Home = () => {
       longitude: feature.geometry.coordinates[0],
     };
   });
+  const walkFeaturesList = walk.features.map(feature => {
+    return {
+      id: feature.properties.id,
+      label: feature.properties.name,
+      latitude: feature.geometry.coordinates[1],
+      longitude: feature.geometry.coordinates[0],
+    };
+  });
+  const allFeatureList = visitFeaturesList.concat(walkFeaturesList);
   const handleFeatureSelect = (feature) => {
     setSelectedFeature(feature);
     const selectedFeature = {
@@ -45,7 +55,7 @@ const Home = () => {
   const sidePanelContent = <SidePanelContent
     mapStyle={mapStyle}
     onMapStyleChanged={setMapStyle}
-    featuresList={visitFeaturesList}
+    featuresList={allFeatureList}
     selectedFeature={selectedFeature}
     onFeatureSelect={handleFeatureSelect}
   />;
@@ -55,7 +65,7 @@ const Home = () => {
   const mainContent = <MainContent
     mapStyle={mapStyle}
     onViewportChange={(vp) => dispatch(setViewport(vp))}
-    featuresList={visitFeaturesList}
+    featuresList={allFeatureList}
     selectedFeature={selectedFeature}
     onFeatureSelect={handleFeatureSelect}
   />;
