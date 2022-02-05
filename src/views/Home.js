@@ -7,12 +7,12 @@ import MainContent from '../components/MainContent';
 import Logo from '../components/img/Logo.png';
 
 import {INITIAL_MAPSTYLE_URL, WIDESCREEN_STEP} from '../config';
-import Typography from '@mui/material/Typography';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {getVisitFeatures} from '../modules/api/selectors';
 import {setViewport} from '../modules/app/actions';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Typography from '@mui/material/Typography';
 
 const Home = () => {
   const widescreen = useMediaQuery(`(min-width: ${WIDESCREEN_STEP})`, {noSsr: true});
@@ -55,6 +55,9 @@ const Home = () => {
   const mainContent = <MainContent
     mapStyle={mapStyle}
     onViewportChange={(vp) => dispatch(setViewport(vp))}
+    featuresList={visitFeaturesList}
+    selectedFeature={selectedFeature}
+    onFeatureSelect={handleFeatureSelect}
   />;
 
   return <Layout

@@ -24,7 +24,6 @@ const MainContent = styled(Box, {
 
 const Layout = ({headerLogo, headerTitle, mainContent, isSidePanelOpen, onSidePanelOpen, sidePanelContent}) => {
   const widescreen = useMediaQuery(`(min-width: ${WIDESCREEN_STEP})`, {noSsr: true});
-
   const handleSidePanelOpen = () => onSidePanelOpen();
   return (
     <>
@@ -51,7 +50,7 @@ const Layout = ({headerLogo, headerTitle, mainContent, isSidePanelOpen, onSidePa
 
 Layout.propTypes = {
   headerLogo: PropTypes.element,
-  headerTitle: PropTypes.string.isRequired,
+  headerTitle: PropTypes.element.isRequired,
   sidePanelContent: PropTypes.element.isRequired,
   isSidePanelOpen: PropTypes.bool.isRequired,
   mainContent: PropTypes.element.isRequired,

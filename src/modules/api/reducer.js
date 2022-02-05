@@ -53,6 +53,15 @@ const apiVisitFeaturesSuccess = (state, {payload}) => {
         book: row[14] === ''? undefined : row[14],
         alert_timetable: row[15] === ''? undefined : row[15],
         alert_visit: row[16] === ''? undefined : row[16],
+        timetable: [
+          row[19] !== '' ? {id: 'L', morning: [row[17],row[18]], afternoon: [row[19],row[20]]} : {id: 'L', morning: [row[17],row[18]]},
+          row[23] !== '' ? {id: 'M', morning: [row[21],row[22]], afternoon: [row[23],row[24]]} : {id: 'M', morning: [row[21],row[22]]},
+          row[27] !== '' ? {id: 'X', morning: [row[25],row[26]], afternoon: [row[27],row[28]]} : {id: 'X', morning: [row[25],row[26]]},
+          row[31] !== '' ? {id: 'J', morning: [row[29],row[30]], afternoon: [row[31],row[32]]} : {id: 'J', morning: [row[29],row[30]]},
+          row[35] !== '' ? {id: 'V', morning: [row[33],row[34]], afternoon: [row[35],row[36]]} : {id: 'V', morning: [row[33],row[34]]},
+          row[39] !== '' ? {id: 'S', morning: [row[37],row[38]], afternoon: [row[39],row[40]]} : {id: 'S', morning: [row[37],row[38]]},
+          row[43] !== '' ? {id: 'D', morning: [row[41],row[42]], afternoon: [row[43],row[44]]} : {id: 'D', morning: [row[41],row[42]]}
+        ],
       },
       geometry: {
         type: 'Point',
@@ -206,7 +215,7 @@ const apiCateringFeaturesSuccess = (state, {payload}) => {
         image: row[11] === ''? undefined : row[11],
         plan: row[12] === ''? undefined : row[12],
         doc: row[13] === ''? undefined : row[13],
-        book: row[14] === ''? undefined : row[14],
+        webTrip: row[14] === ''? undefined : row[14],
         alert_timetable: row[15] === ''? undefined : row[15],
         alert_visit: row[16] === ''? undefined : row[16],
       },

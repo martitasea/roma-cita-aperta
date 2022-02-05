@@ -51,6 +51,46 @@ export const VISITED_FEATURES = localStorage.getItem('roma-cita-aperta.visitedFe
 
 export const LAYERS = [
   {
+    id: 'quartieri-fill',
+    source: 'quartieri',
+    type: 'fill',
+    paint: {
+      'fill-color': '#519259',
+      'fill-opacity': 0.1,
+      'fill-outline-color': 'red'
+    }
+  },
+  {
+    id: 'quartieri-line',
+    source: 'quartieri',
+    type: 'line',
+    paint: {
+      'line-color': '#519259',
+      'line-width': 2,
+    }
+  },
+  {
+    id: 'colinas',
+    source: 'colinas',
+    type: 'circle',
+    paint: {
+      'circle-radius': 10,
+      'circle-color': 'transparent',
+      'circle-stroke-color': 'black',
+      'circle-stroke-width': 2,
+    }
+  },
+  {
+    id: 'muralla_severiana',
+    source: 'muralla_severiana',
+    type: 'line',
+    paint: {
+      'line-color': 'black',
+      'line-width': 2,
+      'line-dasharray': [2,2],
+    }
+  },
+  {
     id: 'visit',
     source: 'visit',
     type: 'circle',
@@ -75,7 +115,7 @@ export const LAYERS = [
     source: 'accomodation',
     type: 'circle',
     paint: {
-      'circle-radius': 6,
+      'circle-radius': 4,
       'circle-color': COLOR_PROFILE.accomodation
     }
   },
@@ -84,7 +124,7 @@ export const LAYERS = [
     source: 'commerce',
     type: 'circle',
     paint: {
-      'circle-radius': 6,
+      'circle-radius': 4,
       'circle-color': COLOR_PROFILE.commerce
     }
   },
@@ -93,10 +133,11 @@ export const LAYERS = [
     source: 'catering',
     type: 'circle',
     paint: {
-      'circle-radius': 6,
+      'circle-radius': 4,
       'circle-color': COLOR_PROFILE.catering
     }
-  }
+  },
+
 ];
 export const LEGEND = [
   {

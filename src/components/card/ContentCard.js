@@ -14,18 +14,19 @@ import styled from '@mui/styles/styled';
 
 
 const PlanImage = styled('img')({
-  maxWidth: '50vw'
+  maxWidth: '100%',
 });
 
 const ContentCard = ({poi}) => {
   const colorProfile = Colors(poi.type);
-  const [tabValue, setTabValue] = useState(poi.description ? 'description' : 'open');
+  const [tabValue, setTabValue] = useState('description');
   const handleTabChange = (event, newValue) => setTabValue(newValue);
   const tabs = {
     '& .MuiButtonBase-root': {
       py:0,
       px:2,
       color: '#a8a8a8',
+
       '&.Mui-selected': {
         color: colorProfile,
       },
@@ -36,24 +37,18 @@ const ContentCard = ({poi}) => {
     },
   };
   return <CardContent>
-    {poi.alert_visit && <Alert severity="success" sx={{mt: 1, width: '100%'}}>{poi.alert_visit}</Alert>}
+    {poi.alert_visit && <Alert severity='success' sx={{width: '100%', p:0}}>{poi.alert_visit}</Alert>}
     <TabContext value={tabValue}>
       <Tabs value={tabValue} onChange={handleTabChange} sx={tabs}>
-        {poi.description && <Tab label="Descripción" value="description"/>}
-        {/*{poi.timetable && <Tab label="Horario" value="open"/>}*/}
-        {poi.plan && <Tab label="Plano" value="plan"/>}
+        {poi.description && <Tab label='Descripción' value='description'/>}
+        {poi.plan && <Tab label='Plano' value='plan'/>}
       </Tabs>
-      {/*{
-        poi.timetable && <TabPanel value="open" index={0} sx={{p: 0}}>
-          <WeekToogleButton timetable={poi.timetable} alert_timetable={poi.alert_timetable} alert_visit={poi.alert_visit}/>
-        </TabPanel>
-      }*/}
-      <TabPanel value="description" index={1} sx={{m: 1, p: 0,}}>
-        <Box sx={{maxHeight: 250, height: 'auto', overflowY: 'auto', mt: 1}}>
-          <Typography variant="caption">{poi.description}</Typography>
+      <TabPanel value='description' index={1} sx={{p: 0, m: 'auto'}}>
+        <Box sx={{maxHeight: 250, overflowY: 'auto'}}>
+          <Typography variant='caption'>{poi.description}</Typography>
         </Box>
       </TabPanel>
-      <TabPanel value="plan" index={2} sx={{m: 1, p: 0}}>
+      <TabPanel value='plan' index={2} sx={{p: 0}}>
         <PlanImage alt={name} src={poi.plan}/>
       </TabPanel>
     </TabContext>
@@ -65,3 +60,4 @@ ContentCard.propTypes = {
 };
 
 export default ContentCard;
+

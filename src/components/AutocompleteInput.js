@@ -15,6 +15,8 @@ const AutocompleteInput = ({featuresList, selectedFeature, onFeatureSelect}) => 
       onChange={handleFeatureSelect}
       autoComplete
       fullWidth
+      size='small'
+      sx={{bgcolor: 'white'}}
     />
   </>;
 };
