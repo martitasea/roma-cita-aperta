@@ -12,16 +12,16 @@ const HeaderCard = ({poi}) => {
     <CardHeader
       avatar={<Avatar sx={{bgcolor: colorProfile}}>
         {poi.category ? <Categories categoryId={poi.category}/> :
-          <Categories categoryId="DefaultIcon"/>}
+          <Categories categoryId='DefaultIcon'/>}
       </Avatar>}
       title={poi.name.toUpperCase()}
-      subheader={`${poi.author || ''} - ${poi.style?.toUpperCase() || ''}`}
+      subheader={`${poi.author || ''} - ${poi.style || ''}`}
     />
     {
       poi.image &&
       <CardMedia
-        component="img"
-        height="194"
+        component='img'
+        height='194'
         image={poi.image}
         alt={poi.name}
       />

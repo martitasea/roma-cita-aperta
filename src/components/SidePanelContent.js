@@ -11,15 +11,23 @@ import SectionTitle from './SectionTitle';
 
 import {LEGEND, MAPSTYLES} from '../config';
 import AutocompleteInput from './AutocompleteInput';
+import Typography from '@mui/material/Typography';
+import Hidden from '@mui/material/Hidden';
 
 const SidePanelContent = ({mapStyle, onMapStyleChanged, featuresList, selectedFeature, onFeatureSelect}) => {
   return <Stack justifyContent="space-between" sx={{height: '81vh'}}>
     <Box>
-      <AutocompleteInput
-        featuresList={featuresList}
-        selectedFeature={selectedFeature}
-        onFeatureSelect={onFeatureSelect}
-      />
+      <Hidden smDown>
+        <AutocompleteInput
+          featuresList={featuresList}
+          selectedFeature={selectedFeature}
+          onFeatureSelect={onFeatureSelect}
+        />
+      </Hidden>
+      <Box display='flex' alignItems='center' mt={2}>
+        {/*<ColorSwitch/>*/}
+        <Typography>Barrios de roma</Typography>
+      </Box>
       <Box>
         <SectionTitle titleKey="Estilo Mapa Base"/>
         <BaseMapList

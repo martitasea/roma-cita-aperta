@@ -8,7 +8,10 @@ export const poiFeature = PropTypes.shape({
   description: PropTypes.string,
   author: PropTypes.string,
   style: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   web: PropTypes.string,
   image: PropTypes.string,
   plan: PropTypes.string,
@@ -16,12 +19,10 @@ export const poiFeature = PropTypes.shape({
   book: PropTypes.string,
   alert_timetable: PropTypes.string,
   alert_visit: PropTypes.string,
-  timetable: PropTypes.arrayOf(PropTypes.shape({
+  timetable: PropTypes.string,
+  /*timetable: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    label: PropTypes.string.isRequired,
-    opening: PropTypes.shape({
-      open: PropTypes.string,
-      closed: PropTypes.string
-    })
-  })),
+    open: PropTypes.arrayOf(PropTypes.string).isRequired,
+    close: PropTypes.arrayOf(PropTypes.string).isRequired,
+  })),*/
 });

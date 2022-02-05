@@ -15,10 +15,14 @@ import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import StoreIcon from '@mui/icons-material/Store';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import Church from '../icons/Church';
 import Castle from '../icons/Church';
+import IcecreamIcon from '@mui/icons-material/Icecream';
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+import SportsBarIcon from '@mui/icons-material/SportsBar';
+import FilterVintageIcon from '@mui/icons-material/FilterVintage';
+import CakeIcon from '@mui/icons-material/Cake';
 
 const CATEGORIES_ICONS = {
   'Castillo': <Castle/>,
@@ -38,8 +42,12 @@ const CATEGORIES_ICONS = {
   'Hotel': <HotelIcon/>,
   'Plaza': <AspectRatioIcon/>,
   'Escultura': <AccountCircleIcon/>,
-  'Mercado': <StoreIcon/>,
-  'Tienda': <LocalGroceryStoreIcon/>
+  'Mercado': <FilterVintageIcon/>,
+  'Tienda': <LocalGroceryStoreIcon/>,
+  'Heladería': <IcecreamIcon/>,
+  'Restaurante': <RestaurantMenuIcon/>,
+  'Beber': <SportsBarIcon/>,
+  'Pastelería': <CakeIcon/>,
 };
 
 const DEFAULT_ICON = <CheckBoxOutlineBlankIcon/>;

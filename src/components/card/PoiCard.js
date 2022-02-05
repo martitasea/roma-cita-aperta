@@ -6,8 +6,8 @@ import HeaderCard from './HeaderCard';
 import ContentCard from './ContentCard';
 import ActionsCard from './ActionsCard';
 
-const PoiCard = ({poi, onVisitedPoi}) => {
-  return <Card sx={{width:'90vw'}} elevation={12}>
+const PoiCard = ({poi, onVisitedPoi, widthCard, elevationCard}) => {
+  return <Card sx={{width: widthCard}} elevation={elevationCard}>
     <HeaderCard poi={poi}/>
     <ContentCard poi={poi}/>
     <ActionsCard poi={poi} onVisitedPoi={onVisitedPoi}/>
@@ -17,6 +17,13 @@ const PoiCard = ({poi, onVisitedPoi}) => {
 PoiCard.propTypes = {
   poi: poiFeature,
   onVisitedPoi: PropTypes.func,
+  widthCard: PropTypes.string,
+  elevationCard: PropTypes.number
+};
+
+PoiCard.defaultProps = {
+  widthCard: '100%',
+  elevationCard: 10
 };
 
 export default PoiCard;
